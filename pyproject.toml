@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cloudme-notify"
+dynamic = ["version"]
+description = "Official Python SDK for the CloudMe Notify multi-channel notification API (SMS, Telegram, WhatsApp, Voice, Email, Push)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "CloudMe" }]
+keywords = ["notify", "sms", "telegram", "whatsapp", "push", "email", "voice", "otp", "notifications", "api"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Communications",
+    "Typing :: Typed",
+]
+dependencies = [
+    "httpx>=0.24,<1",
+    "cryptography>=41",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.urls]
+Homepage = "https://notify.cloudme.uz"
+Documentation = "https://docs.notify.cloudme.uz"
+Source = "https://github.com/Cloudmeuz/notify-python"
+
+[tool.setuptools.dynamic]
+version = { attr = "cloudme_notify.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+cloudme_notify = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
